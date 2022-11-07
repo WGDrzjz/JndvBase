@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
-    id 'maven'
+//    id 'maven'
+    id 'maven-publish'
 }
 ext {
     GITHUB_REPO_PATH = "D://JNChatSdk/JNBaseAAR"
@@ -8,6 +9,8 @@ ext {
     PUBLISH_ARTIFACT_ID = 'JNChatBase'
     PUBLISH_VERSION = '1.0.1'
 }
+/**
+
 
 uploadArchives {
     repositories {
@@ -32,6 +35,48 @@ task androidSourcesJar(type: Jar) {
 artifacts {
     archives androidSourcesJar
 }
+*/
+
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+afterEvaluate{
+    publishing  {
+//        def deployPath = file(project.GITHUB_REPO_PATH)
+        repositories {
+            maven {
+                url= project.GITHUB_REPO_PATH
+            }
+        }
+        publications {
+            maven(MavenPublication) {
+                //指定group/artifact/version信息，可以不填。默认使用项目group/name/version作为groupId/artifactId/version
+                groupId project.PUBLISH_GROUP_ID
+                artifactId project.PUBLISH_ARTIFACT_ID
+                version project.PUBLISH_VERSION
+                artifact androidSourcesJar
+            }
+        }
+//        publications{
+//            release(MavenPublication){
+//                from components.release
+//                groupId='wgd.jnchat.lib'
+//                version=android.defaultConfig.versionName
+//                artifactId='JNChatSdk'
+//            }
+//            debug(MavenPublication){
+//                from components.debug
+//                groupId='wgd.jnchat.lib'
+//                version=android.defaultConfig.versionName
+//                artifactId='JNChatSdk'
+//            }
+//        }
+
+    }
+}
+
 
 android {
     compileSdkVersion 30
@@ -91,6 +136,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.20"
     // 添加objectbox 查看依赖
     // objectbox-android-objectbrowser是objectbox开发使用的查看工具
     //    debugImplementation "io.objectbox:objectbox-android-objectbrowser:$objectboxVersion"

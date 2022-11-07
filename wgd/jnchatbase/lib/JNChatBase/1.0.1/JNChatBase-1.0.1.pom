@@ -5,43 +5,5 @@
   <groupId>wgd.jnchatbase.lib</groupId>
   <artifactId>JNChatBase</artifactId>
   <version>1.0.1</version>
-  <packaging>aar</packaging>
-  <dependencies>
-    <dependency>
-      <groupId>io.objectbox</groupId>
-      <artifactId>objectbox-android</artifactId>
-      <version>3.1.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.github.WGDrzjz</groupId>
-      <artifactId>JndvSipSdk</artifactId>
-      <version>1.0.12</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.objectbox</groupId>
-      <artifactId>objectbox-java</artifactId>
-      <version>3.1.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>androidx.appcompat</groupId>
-      <artifactId>appcompat</artifactId>
-      <version>1.2.0</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.google.android.material</groupId>
-      <artifactId>material</artifactId>
-      <version>1.2.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jetbrains.kotlin</groupId>
-      <artifactId>kotlin-stdlib</artifactId>
-      <version>1.5.20</version>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
+  <packaging>pom</packaging>
 </project>
